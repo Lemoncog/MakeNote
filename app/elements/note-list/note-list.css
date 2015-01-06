@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.add {
+	position: absolute;
+	bottom : 12px;
+	right: 12px;
+}
+
+div {
+	height: 100px;
+	width : 100px;
+}

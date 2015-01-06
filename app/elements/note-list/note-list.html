@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<polymer-element name="note-list" attributes="">
+  <template>
+    <link rel="stylesheet" href="note-list.css">
+    
+    <paper-fab class="add" icon="add" on-click="{{addItem}}"></paper-fab>
+      <template repeat="{{item in list}}">
+        <h1>{{item.title}}</h1>
+      </template>
+  </template>
+  <script>
+    (function () {
+
+      testList = [];
+      for(var i = 0; i < 10; i++) {
+        testList.push({ title : "Hello " + i });
+      }
+
+      Polymer({
+
+        addItem: function(e, detail, sender) {
+          console.log("Clicked something");
+        },
+
+
+        // define element prototype here
+        list : testList
+      });
+
+    })();
+  </script>
+</polymer-element>
