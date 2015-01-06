@@ -1,9 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
-<polymer-element name="note-card" attributes="">
+<polymer-element name="note-card" attributes="card">
   <template>
     <link rel="stylesheet" href="note-card.css">
+        <h1>{{card.title}}</h1>
   </template>
   <script>
     (function () {

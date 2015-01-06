@@ -2,14 +2,22 @@
 <link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-list/core-list.html">
+
 <polymer-element name="note-list" attributes="">
   <template>
     <link rel="stylesheet" href="note-list.css">
-    
     <paper-fab class="add" icon="add" on-click="{{addItem}}"></paper-fab>
-      <template repeat="{{item in list}}">
-        <h1>{{item.title}}</h1>
-      </template>
+    
+      <core-list id="list" data="{{list}}" flex>
+        <template>
+          <div class="row {{ {selected: selected} | tokenList }}">
+            <note-card card="{{model}}"></note-card>
+          </div>
+        </template>
+        <!--<note-card card="{{item}}"></note-card>-->
+      </core-list>
+
   </template>
   <script>
     (function () {
