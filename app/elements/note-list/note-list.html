@@ -38,6 +38,7 @@
       Polymer({
 
         addItem: function(e, detail, sender) {
+          this.list.unshift( { title : "Clicked an item" });
           console.log("Clicked something");
         },
 
