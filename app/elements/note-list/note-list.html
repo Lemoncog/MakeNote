@@ -11,7 +11,16 @@
       <core-list id="list" data="{{list}}" flex>
         <template>
           <div flex class="row {{ {selected: selected} | tokenList }}">
-            <note-card card="{{model}}"></note-card>
+          <template if="{{!selected}}">
+            <paper-shadow class="card" z="1">
+              <note-card card="{{model}}"></note-card>
+            </paper-shadow>
+          </template>
+          <template if="{{selected}}">
+            <paper-shadow class="card" z="4">
+                <note-card card="{{model}}"></note-card>
+            </paper-shadow>
+          </template>
           </div>
         </template>
       </core-list>

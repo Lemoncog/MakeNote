@@ -1,13 +1,3 @@
 :host {
   display: block;
 }
-
-.card {
-  display: inline-block;
-  background: white;
-  box-sizing: border-box;
-  margin: 1%;
-  padding: 16px;
-  width: 98%;
-  border-radius: 2px;
-}
