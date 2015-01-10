@@ -1,9 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
-<polymer-element name="note-card" attributes="card">
+<polymer-element name="note-card" attributes="card selected">
   <template>
     <link rel="stylesheet" href="note-card.css">
-      <h1>{{card.title}}</h1>
+      <paper-shadow class="card" z="1" selected="{{selected}}">
+        <h1>{{card.title}}</h1>
+        <h2>{{card.description}}</h2>
+      </paper-shadow>
   </template>
   <script>
     (function () {

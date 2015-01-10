@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../bower_components/core-list/core-list.html">
 
+
 <polymer-element name="note-list" attributes="">
   <template>
     <link rel="stylesheet" href="note-list.css">
@@ -11,16 +12,7 @@
       <core-list id="list" data="{{list}}" flex>
         <template>
           <div flex class="row {{ {selected: selected} | tokenList }}">
-          <template if="{{!selected}}">
-            <paper-shadow class="card" z="1">
-              <note-card card="{{model}}"></note-card>
-            </paper-shadow>
-          </template>
-          <template if="{{selected}}">
-            <paper-shadow class="card" z="4">
-                <note-card card="{{model}}"></note-card>
-            </paper-shadow>
-          </template>
+              <note-card card="{{model}}" selected="{{selected}}"></note-card>
           </div>
         </template>
       </core-list>
@@ -32,13 +24,13 @@
 
       testList = [];
       for(var i = 0; i < 10; i++) {
-        testList.push({ title : "Hello " + i });
+        testList.push( { title : lorem.ipsum("lorem_s1$40"), description : lorem.ipsum("lorem_s5$400") });
       }
 
       Polymer({
 
         addItem: function(e, detail, sender) {
-          this.list.unshift( { title : "Clicked an item" });
+          this.list.unshift( { title : lorem.ipsum("lorem_s1$40"), description : lorem.ipsum("lorem_s5$400") });
           console.log("Clicked something");
         },
 
