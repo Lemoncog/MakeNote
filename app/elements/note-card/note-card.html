@@ -1,11 +1,17 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <polymer-element name="note-card" attributes="card selected">
   <template>
     <link rel="stylesheet" href="note-card.css">
       <paper-shadow class="card" z="1" selected="{{selected}}">
-        <h1>{{card.title}}</h1>
-        <h2>{{card.description}}</h2>
+        <div horizontal layout center>
+          <core-icon class="tag" icon="polymer"></core-icon>
+          <div id="textcontent" vertical layout>
+            <h1>{{card.title}}</h1>
+            <h2>{{card.description}}</h2>
+          </div>
+        </div>
       </paper-shadow>
   </template>
   <script>
