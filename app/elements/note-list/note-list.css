@@ -18,3 +18,9 @@ core-list {
   width: 100%;
   margin: 0 auto;
 }
+
+paper-action-dialog {
+  width: 90%;
+  min-width: 430px;
+  max-width: 600px;
+}

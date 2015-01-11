@@ -10,7 +10,7 @@ note-list {
   margin-top: 100px;
 }
 
-core-toolbar {
+&core-toolbar {
   height : 100px;
 }
 
