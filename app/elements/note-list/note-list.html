@@ -6,6 +6,9 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
 <style shim-shadowdom>
   html /deep/ [autofocus] {
@@ -38,8 +41,9 @@
       </core-list>
 
     <paper-fab class="add" icon="add" on-click="{{addItem}}"></paper-fab>
-    <paper-action-dialog  id="addItemDialog" heading="Dialog Title" backdrop autoCloseDisabled layered="false">
-      <p>Some content</p>
+    <paper-action-dialog id="addItemDialog" backdrop autoCloseDisabled layered="false">
+      <paper-input label="Title"></paper-input><br>
+      <paper-input label="Description"></paper-input>
       <paper-button dismissive>Cancel</paper-button>
       <paper-button affirmative autofocus>Done</paper-button>
     </paper-action-dialog>
