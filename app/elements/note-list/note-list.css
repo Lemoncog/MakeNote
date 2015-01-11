@@ -41,3 +41,7 @@ paper-input {
   width : 40px;
   margin: 10px;
 }
+
+.tag[selected="true"] {
+  color: #2196f3;
+}

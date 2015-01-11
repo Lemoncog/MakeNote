@@ -12,6 +12,7 @@
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
 
+
 <style shim-shadowdom>
   html /deep/ [autofocus] {
     color: #03a9f4;
@@ -37,7 +38,7 @@
       <core-list id="list" data="{{list}}" flex>
         <template>
           <div flex class="row {{ {selected: selected} | tokenList }}">
-              <note-card card="{{model}}" selected="{{selected}}"></note-card>
+              <note-card computerTagged="{{ model | hasComputer }}" phoneTagged="{{ model | hasPhone }}"  tabletTagged="{{ model | hasTablet }}" card="{{model}}" selected="{{selected}}"></note-card>
           </div>
         </template>
       </core-list>
@@ -46,9 +47,9 @@
     <paper-action-dialog id="addItemDialog" backdrop autoCloseDisabled layered="false">
       <div horizontal layout>
         <paper-input flex id="dialogInputTitle" label="Title"></paper-input>
-        <core-icon class="tag" icon="hardware:computer"></core-icon>
-        <core-icon class="tag" icon="hardware:phone-android"></core-icon>
-        <core-icon class="tag" icon="hardware:tablet"></core-icon>
+        <core-icon class="tag" id="dialogTagComputer" on-click="{{tagClicked}}" selected="false" icon="hardware:computer"></core-icon>
+        <core-icon class="tag" id="dialogTagPhone" on-click="{{tagClicked}}" selected="false" icon="hardware:phone-android"></core-icon>
+        <core-icon class="tag" id="dialogTagTablet" on-click="{{tagClicked}}" selected="false" icon="hardware:tablet"></core-icon>
       </div>
       <paper-input id="dialogInputDescription" label="Description"></paper-input>
       <paper-button dismissive>Cancel</paper-button>
@@ -63,24 +64,78 @@
         document.getElementById("dialogInputDescription").value = "";
       }
 
-      function Note(title, description) {
+      function Note(title, description, tags) {
         this.title = title;
         this.description = description;
+        this.tags = tags;
+
+        this.hasTag = function(tag) {
+          console.log("hasTag = " + this.tags[tag]);
+
+          return this.tags[tag];
+        }
       }
 
       testList = [];
       for(var i = 0; i < 10; i++) {
-        testList.push( new Note(lorem.ipsum("lorem_s1$40"), lorem.ipsum("lorem_s5$400")) );
+        var tags = 
+        {
+          computer : (Math.random() < .5),
+          phone : (Math.random() < .5),
+          tablet : (Math.random() < .5),
+        };
+        console.log(i);
+        testList.push( new Note(lorem.ipsum("lorem_s1$40"), lorem.ipsum("lorem_s5$400"), tags));
       }
 
       Polymer({
+
+        hasComputer: function(model) {
+          if(model != undefined) {
+            return model.tags["computer"];
+          }
+
+          return false;
+        },
+        hasPhone : function(model) {
+          if(model != undefined) {
+           return model.tags["phone"];
+          }
+
+          return false;
+        }, 
+        hasTablet : function(model) {
+          if(model != undefined) {
+            return model.tags["tablet"];
+          }
+
+          return false;
+        },
+        tagClicked: function(e, detail, sender) {
+          var state = sender.getAttribute("selected");
+
+          //flip!
+          if(state == "true") {
+            state = "false"
+          } else {
+            state = "true";
+          }
+
+          sender.setAttribute("selected", state);
+        },
 
         commitNote: function(e, detail, sender) {
           titleField = document.getElementById("dialogInputTitle");
           descriptionField = document.getElementById("dialogInputDescription");
 
+          tags = {  computer : document.getElementById("dialogTagComputer").getAttribute("selected"),
+          phone :  document.getElementById("dialogTagPhone").getAttribute("selected"),
+          tablet : document.getElementById("dialogTagTablet").getAttribute("selected")
+        }
+
+        console.log("SHOULD NOT OF RAN");
           if(titleField.value.length > 0) {
-           testList.unshift(new Note(titleField.value, descriptionField.value));
+           testList.unshift(new Note(titleField.value, descriptionField.value, tags));
           }
           
           clearDialog();

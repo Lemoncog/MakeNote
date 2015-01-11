@@ -2,12 +2,22 @@
 <link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../../bower_components/core-icons/core-icons.html">
 <link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
-<polymer-element name="note-card" attributes="card selected">
+<polymer-element name="note-card" attributes="card selected computerTagged phoneTagged tabletTagged">
   <template>
     <link rel="stylesheet" href="note-card.css">
       <paper-shadow class="card" z="1" selected="{{selected}}">
         <div horizontal layout center>
-          <core-icon class="tag" icon="hardware:computer"></core-icon>
+          <div vertical layout>
+            <template if="{{ computerTagged }}">
+              <core-icon class="tag" icon="hardware:computer"></core-icon>
+            </template>
+            <template if="{{ phoneTagged }}">
+              <core-icon class="tag" icon="hardware:phone-android"></core-icon>
+            </template>
+            <template if="{{ tabletTagged }}">
+              <core-icon class="tag" icon="hardware:tablet"></core-icon>
+            </template>
+          </div>
           <div id="textcontent" vertical layout>
             <h1>{{card.title}}</h1>
             <h3>Jan 9 2014, 12:00pm<h3>
@@ -21,6 +31,9 @@
 
       Polymer({
         // define element prototype here
+        computerTagged : false,
+        phoneTagged : false,
+        tabletTagged : false
       });
 
     })();
