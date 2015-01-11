@@ -9,6 +9,8 @@
 <link rel="import" href="../../bower_components/paper-input/paper-autogrow-textarea.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
 
 <style shim-shadowdom>
   html /deep/ [autofocus] {
@@ -42,21 +44,47 @@
 
     <paper-fab class="add" icon="add" on-click="{{addItem}}"></paper-fab>
     <paper-action-dialog id="addItemDialog" backdrop autoCloseDisabled layered="false">
-      <paper-input label="Title"></paper-input><br>
-      <paper-input label="Description"></paper-input>
+      <div horizontal layout>
+        <paper-input flex id="dialogInputTitle" label="Title"></paper-input>
+        <core-icon class="tag" icon="hardware:computer"></core-icon>
+        <core-icon class="tag" icon="hardware:phone-android"></core-icon>
+        <core-icon class="tag" icon="hardware:tablet"></core-icon>
+      </div>
+      <paper-input id="dialogInputDescription" label="Description"></paper-input>
       <paper-button dismissive>Cancel</paper-button>
-      <paper-button affirmative autofocus>Done</paper-button>
+      <paper-button affirmative autofocus on-click="{{commitNote}}">Done</paper-button>
     </paper-action-dialog>
   </template>
   <script>
     (function () {
 
+      function clearDialog() {
+        document.getElementById("dialogInputTitle").value = "";
+        document.getElementById("dialogInputDescription").value = "";
+      }
+
+      function Note(title, description) {
+        this.title = title;
+        this.description = description;
+      }
+
       testList = [];
       for(var i = 0; i < 10; i++) {
-        testList.push( { title : lorem.ipsum("lorem_s1$40"), description : lorem.ipsum("lorem_s5$400") });
+        testList.push( new Note(lorem.ipsum("lorem_s1$40"), lorem.ipsum("lorem_s5$400")) );
       }
 
       Polymer({
+
+        commitNote: function(e, detail, sender) {
+          titleField = document.getElementById("dialogInputTitle");
+          descriptionField = document.getElementById("dialogInputDescription");
+
+          if(titleField.value.length > 0) {
+           testList.unshift(new Note(titleField.value, descriptionField.value));
+          }
+          
+          clearDialog();
+        },
 
         addItem: function(e, detail, sender) {
           document.getElementById("addItemDialog").toggle();
