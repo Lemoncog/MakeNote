@@ -38,7 +38,7 @@
       <core-list id="list" data="{{list}}" flex>
         <template>
           <div flex class="row {{ {selected: selected} | tokenList }}">
-              <note-card computerTagged="{{ model | hasComputer }}" phoneTagged="{{ model | hasPhone }}"  tabletTagged="{{ model | hasTablet }}" card="{{model}}" selected="{{selected}}"></note-card>
+              <note-card card="{{model}}" selected="{{selected}}"></note-card>
           </div>
         </template>
       </core-list>
@@ -67,13 +67,10 @@
       function Note(title, description, tags) {
         this.title = title;
         this.description = description;
-        this.tags = tags;
 
-        this.hasTag = function(tag) {
-          console.log("hasTag = " + this.tags[tag]);
-
-          return this.tags[tag];
-        }
+        this.computerTagged = tags['computer'];
+        this.phoneTagged = tags['phone'];
+        this.tabletTagged = tags['tablet'];
       }
 
       testList = [];
@@ -89,28 +86,6 @@
       }
 
       Polymer({
-
-        hasComputer: function(model) {
-          if(model != undefined) {
-            return model.tags["computer"];
-          }
-
-          return false;
-        },
-        hasPhone : function(model) {
-          if(model != undefined) {
-           return model.tags["phone"];
-          }
-
-          return false;
-        }, 
-        hasTablet : function(model) {
-          if(model != undefined) {
-            return model.tags["tablet"];
-          }
-
-          return false;
-        },
         tagClicked: function(e, detail, sender) {
           var state = sender.getAttribute("selected");
 
