@@ -32,6 +32,10 @@ h3 {
 .tag {
   height : 40px;
   width : 40px;
+}
+
+#tagsHolder {
+  width : 50px;
   margin: 10px;
 }
 
