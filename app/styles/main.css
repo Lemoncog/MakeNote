@@ -7,10 +7,11 @@ body {
 
 note-list {
   overflow: auto;
-  margin-top: 100px;
+  margin-top: 4.5em;
 }
 
 core-toolbar {
+  height: 3em;
   background: #4CAF50;
   color: white;
   font-family: sans-serif;
