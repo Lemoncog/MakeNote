@@ -58,12 +58,6 @@
   </template>
   <script>
     (function () {
-
-      function clearDialog() {
-        this.$.dialogInputTitle.value = "";
-        this.$.dialogInputDescription.value = "";
-      }
-
       function Note(title, description, tags) {
         this.title = title;
         this.description = description;
@@ -86,6 +80,11 @@
       }
 
       Polymer({
+        
+        clearDialog: function() {
+          this.$.dialogInputTitle.value = "";
+          this.$.dialogInputDescription.value = "";
+        },
         tagClicked: function(e, detail, sender) {
           var state = sender.getAttribute("selected");
 
@@ -112,7 +111,7 @@
            testList.unshift(new Note(titleField.value, descriptionField.value, tags));
           }
           
-          clearDialog();
+          this.clearDialog();
         },
 
         addItem: function(e, detail, sender) {
