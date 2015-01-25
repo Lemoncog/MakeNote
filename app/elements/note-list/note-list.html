@@ -60,8 +60,8 @@
     (function () {
 
       function clearDialog() {
-        document.getElementById("dialogInputTitle").value = "";
-        document.getElementById("dialogInputDescription").value = "";
+        this.$.dialogInputTitle.value = "";
+        this.$.dialogInputDescription.value = "";
       }
 
       function Note(title, description, tags) {
@@ -100,12 +100,12 @@
         },
 
         commitNote: function(e, detail, sender) {
-          titleField = document.getElementById("dialogInputTitle");
-          descriptionField = document.getElementById("dialogInputDescription");
+          titleField = this.$.dialogInputTitle;
 
-          tags = {  computer : document.getElementById("dialogTagComputer").getAttribute("selected"),
-          phone :  document.getElementById("dialogTagPhone").getAttribute("selected"),
-          tablet : document.getElementById("dialogTagTablet").getAttribute("selected")
+          descriptionField = this.$.dialogInputDescription;
+          tags = {  computer : this.$.dialogTagComputer.getAttribute("selected"),
+          phone :  this.$.dialogTagPhone.getAttribute("selected"),
+          tablet : this.$.dialogTagTablet.getAttribute("selected")
         }
 
           if(titleField.value.length > 0) {
