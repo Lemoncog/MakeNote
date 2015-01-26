@@ -7,12 +7,16 @@ h1 {
   font-size: 18px;
   margin: 2px;
   color : #001;
+  font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+  font-weight: normal;
 }
 
 h2 {
  font-size: 16px;
  color: #616161;
  margin: 2px; 
+ font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+ font-weight: normal;
 }
 
 .noteRoot {
@@ -23,16 +27,6 @@ h2 {
   width : 30px;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-.card {
-  display: inline-block;
-  background: white;
-  box-sizing: border-box;
-  margin: 1%;
-  padding: 16px;
-  width: 98%;
-  border-radius: 2px;
 }
 
 .card {
