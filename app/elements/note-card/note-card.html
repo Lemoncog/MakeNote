@@ -6,21 +6,22 @@
   <template>
     <link rel="stylesheet" href="note-card.css">
       <paper-shadow class="card" z="1" selected="{{selected}}">
-        <div horizontal layout center>
-          <div id="tagsHolder" vertical layout wrap>
-            <template if="{{ card.computerTagged }}">
-              <core-icon class="tag" icon="hardware:computer"></core-icon>
-            </template>
-            <template if="{{ card.phoneTagged }}">
-              <core-icon class="tag" icon="hardware:phone-android"></core-icon>
-            </template>
-            <template if="{{ card.tabletTagged }}">
-              <core-icon class="tag" icon="hardware:tablet"></core-icon>
-            </template>
-          </div>
+        <div id="noteRoot" vertical layout>
+            <div id="tagsHolder" end horizontal layout wrap>
+              <div layout flex three>
+                <h1>{{card.title}}</h1>
+              </div>
+              <template if="{{ card.computerTagged }}">
+                <core-icon class="tag" icon="hardware:computer"></core-icon>
+              </template>
+              <template if="{{ card.phoneTagged }}">
+                <core-icon class="tag" icon="hardware:phone-android"></core-icon>
+              </template>
+              <template if="{{ card.tabletTagged }}">
+                <core-icon class="tag" icon="hardware:tablet"></core-icon>
+              </template>
+            </div>        
           <div id="textcontent" vertical layout>
-            <h1>{{card.title}}</h1>
-            <h3>Jan 9 2014, 12:00pm<h3>
             <h2>{{card.description}}</h2>
           </div>
         </div>

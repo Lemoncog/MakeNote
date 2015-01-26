@@ -76,7 +76,10 @@
           tablet : (Math.random() < .5),
         };
         console.log(i);
-        testList.push( new Note(lorem.ipsum("lorem_s1$40"), lorem.ipsum("lorem_s5$400"), tags));
+
+        var titleLorem = "lorem_s1$" + (50 + Math.random() * 200);
+
+        testList.push( new Note(lorem.ipsum(titleLorem), lorem.ipsum("lorem_s5$400"), tags));
       }
 
       Polymer({
