@@ -51,7 +51,11 @@
         <core-icon class="tag" id="dialogTagPhone" on-click="{{tagClicked}}" selected="false" icon="hardware:phone-android"></core-icon>
         <core-icon class="tag" id="dialogTagTablet" on-click="{{tagClicked}}" selected="false" icon="hardware:tablet"></core-icon>
       </div>
-      <paper-input id="dialogInputDescription" label="Description"></paper-input>
+      <paper-input-decorator id="dialogInputDescription" label="Description">
+      <paper-autogrow-textarea>
+        <textarea></textarea>
+      </paper-autogrow-textarea>
+      </paper-input-decorator>
       <paper-button dismissive>Cancel</paper-button>
       <paper-button affirmative autofocus on-click="{{commitNote}}">Done</paper-button>
     </paper-action-dialog>
