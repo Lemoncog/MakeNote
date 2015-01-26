@@ -23,31 +23,14 @@
   <link rel="import" href="elements/elements.html">
   <!-- endbuild-->
 
-  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-  <link rel="import" href="bower_components/core-media-query/core-media-query.html">
 </head>
 
 <body unresolved fit>
-  <note-list fit></note-list>
-  
-  <core-toolbar>
-      <span flex>MakeNote</span>
-  </core-toolbar>
+  <note-card-home>
+  </note-card-home>
 
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
-
-  <core-media-query id="mediaQuery" query="max-width: 640px"></core-media-query>
-  <script>
-  
-    document.querySelector('#mediaQuery').addEventListener('core-media-change',
-      function(e) {
-        document.body.classList.toggle('core-narrow', e.detail.matches);
-      });
-  
-  </script>
-  <!-- endbuild-->
-
 </body>
 
 </html>

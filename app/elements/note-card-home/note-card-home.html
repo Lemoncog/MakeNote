@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-media-query/core-media-query.html">
+<link rel="import" href="../../bower_components/paper-dropdown/paper-dropdown.html">
+
+<polymer-element name="note-card-home" attributes="">
+  <template>
+    <link rel="stylesheet" href="note-card-home.css">
+
+    <!-- <note-list fit></note-list> -->
+    
+      <core-toolbar>
+          <span flex>MakeNote</span>
+          <core-icon-button icon="alarm" on-tap="{{alarmToggle}}">
+            <paper-dropdown halign="right" id="alarmsDropDown"  class="open-below">
+            Alarms go here?
+            <br>
+            These are all the alarms you have!
+            </paper-dropdown>
+          </core-icon-button>
+      </core-toolbar>
+
+      <core-media-query id="mediaQuery" query="max-width: 640px"></core-media-query>
+
+      </template>
+      <script>
+        (function () {
+
+          Polymer({
+            // define element prototype here
+            alarmToggle: function(e, detail, sender) {
+                this.$.alarmsDropDown.toggle();
+            }
+          });
+
+        })();
+      </script>
+</polymer-element>
