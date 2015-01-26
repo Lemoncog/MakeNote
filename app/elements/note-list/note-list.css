@@ -39,7 +39,7 @@ paper-input {
   height: 100%;
 }
 
-.tag {
+:host(.tag) {
   height : 30px;
   width : 30px;
   margin: 10px;
