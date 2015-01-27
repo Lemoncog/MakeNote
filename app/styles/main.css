@@ -4,19 +4,3 @@ body {
   color: #333;
   margin: 0px;
 }
-
-note-list {
-  overflow: auto;
-  margin-top: 4em;
-}
-
-core-toolbar {
-  background: #4CAF50;
-  color: white;
-  font-family: sans-serif;
-  height: 3em;
-}
-
-.open-below {
-  top: 38px;
-}
