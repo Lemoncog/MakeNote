@@ -66,6 +66,8 @@
         this.title = title;
         this.description = description;
 
+        console.log(tags);
+
         this.computerTagged = tags['computer'];
         this.phoneTagged = tags['phone'];
         this.tabletTagged = tags['tablet'];
@@ -108,9 +110,9 @@
           titleField = this.$.dialogInputTitle;
           descriptionField = this.$.dialogInputDescription;
 
-          tags = {  computer : this.$.dialogTagComputer.getAttribute("selected"),
-          phone :  this.$.dialogTagPhone.getAttribute("selected"),
-          tablet : this.$.dialogTagTablet.getAttribute("selected")
+          tags = {  computer : (this.$.dialogTagComputer.getAttribute("selected") === 'true'),
+          phone :  (this.$.dialogTagPhone.getAttribute("selected") === 'true'),
+          tablet : (this.$.dialogTagTablet.getAttribute("selected") === 'true')
           }
 
           if(titleField.value.length > 0) {
