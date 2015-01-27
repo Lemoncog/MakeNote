@@ -8,15 +8,11 @@
 	right: 12px;
 }
 
-.row {
-   width : 100%;
-}
-
 core-list {
   display: block;
   height: 100%;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
 }
 
 paper-action-dialog {
@@ -28,6 +24,10 @@ paper-action-dialog {
     width: 90%;
     min-width: 430px;
     max-width: 600px;
+  }
+
+  .row {
+    width: 70%;
   }
 }
 

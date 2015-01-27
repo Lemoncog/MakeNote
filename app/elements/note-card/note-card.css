@@ -1,6 +1,15 @@
 :host {
   display: block;
-  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  :host {
+    display: block;
+    margin-left: 120px;
+    margin-right: 120px;
+  }
 }
 
 h1 {
