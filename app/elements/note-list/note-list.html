@@ -51,9 +51,9 @@
         <core-icon class="tag" id="dialogTagPhone" on-click="{{tagClicked}}" selected="false" icon="hardware:phone-android"></core-icon>
         <core-icon class="tag" id="dialogTagTablet" on-click="{{tagClicked}}" selected="false" icon="hardware:tablet"></core-icon>
       </div>
-      <paper-input-decorator id="dialogInputDescription" label="Description">
+      <paper-input-decorator label="Description">
       <paper-autogrow-textarea>
-        <textarea></textarea>
+        <textarea id="dialogInputDescription"></textarea>
       </paper-autogrow-textarea>
       </paper-input-decorator>
       <paper-button dismissive>Cancel</paper-button>
@@ -79,7 +79,6 @@
           phone : (Math.random() < .5),
           tablet : (Math.random() < .5),
         };
-        console.log(i);
 
         var titleLorem = "lorem_s1$" + (50 + Math.random() * 200);
 
@@ -107,12 +106,12 @@
 
         commitNote: function(e, detail, sender) {
           titleField = this.$.dialogInputTitle;
-
           descriptionField = this.$.dialogInputDescription;
+
           tags = {  computer : this.$.dialogTagComputer.getAttribute("selected"),
           phone :  this.$.dialogTagPhone.getAttribute("selected"),
           tablet : this.$.dialogTagTablet.getAttribute("selected")
-        }
+          }
 
           if(titleField.value.length > 0) {
            testList.unshift(new Note(titleField.value, descriptionField.value, tags));

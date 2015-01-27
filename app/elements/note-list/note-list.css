@@ -35,10 +35,6 @@ paper-input {
 	width : 100%;
 }
 
-.dialogInputDescription {
-  height: 100%;
-}
-
 :host(.tag) {
   height : 30px;
   width : 30px;
