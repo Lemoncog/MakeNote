@@ -15,9 +15,9 @@
           <span flex>MakeNote</span>
           <core-icon-button icon="alarm" on-tap="{{alarmToggle}}">
             <paper-dropdown halign="right" id="alarmsDropDown"  class="open-below">
-            Alarms go here?
-            <br>
-            These are all the alarms you have!
+              <template repeat="{{alarm in alarms}}">
+              <p class="alarm">{{alarm.title}}</p>
+              </template>
             </paper-dropdown>
           </core-icon-button>
       </core-toolbar>
@@ -26,13 +26,28 @@
 
       </template>
       <script>
+
+      function Alarm(title, description) {
+          this.title = title;
+          this.description = description;
+        }
+
         (function () {
+
+          deviceAlarms = [];
+          deviceAlarms.push(new Alarm("Top", "Top alarm description"));
+
+          for(var i = 0; i < 10; i++) {          
+            var titleLorem = "lorem_s1$" + (50 + Math.random() * 200);
+            deviceAlarms.push(new Alarm(lorem.ipsum(titleLorem), lorem.ipsum("lorem_s5$400")));
+          }
 
           Polymer({
             // define element prototype here
             alarmToggle: function(e, detail, sender) {
                 this.$.alarmsDropDown.toggle();
-            }
+            },
+            alarms: deviceAlarms 
           });
 
         })();

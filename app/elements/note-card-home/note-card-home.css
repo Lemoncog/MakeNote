@@ -2,6 +2,17 @@
   display: block;
 }
 
+.alarm {
+  color : white;
+  width: 400px;
+  padding: 4px;
+}
+
+paper-dropdown::shadow #ripple,
+paper-dropdown::shadow #background {
+    background-color: #4CAF50;
+}
+
 note-list {
   overflow: auto;
   margin-top: 4em;
